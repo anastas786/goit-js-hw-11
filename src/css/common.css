@@ -36,3 +36,22 @@ min-width: 300px;}
 display: flex;
   gap: 10px;
 }
+
+.load-more{
+  margin: auto;
+    display: block;
+    min-width: 169px;
+    height: 56px;
+    border-radius: 4px;
+    padding: 16px 32px;
+    background-color: #4D5AE5;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+   
+}

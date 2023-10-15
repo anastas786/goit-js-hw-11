@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 const form = document.getElementById('search-form');
 const input = form.querySelector('input[name="searchQuery"]');
 const imageContainer = document.querySelector('.gallery');
-const loadMoreButton = document.querySelector('.load-more');
+
 
 // Ініціалізація Notiflix
 Notiflix.Notify.init({
@@ -26,6 +26,7 @@ function showForm() {
 showForm();
 
 let currentPage = 1;
+const loadMoreButton = document.querySelector('.load-more');
 
 // Функція для показу/приховування кнопки "Load more"
 function toggleLoadMoreButton(visible) {
@@ -82,7 +83,13 @@ async function performImageSearch(searchQuery) {
 
             currentPage++;
 
-            toggleLoadMoreButton(images.length === 40);
+            // Если количество изображений меньше 40, значит, это конец коллекции
+            if (images.length < 40) {
+                toggleLoadMoreButton(false);
+                Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+            } else {
+                toggleLoadMoreButton(true);
+            }
         }
     } catch (error) {
         console.error('Error:', error);
