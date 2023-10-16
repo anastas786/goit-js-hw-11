@@ -15,43 +15,59 @@ body {
 
 }
 
-
-/* Показати контейнер з зображеннями, коли вони є */
+.gallery{
+  display: flex;
+}
+/* Показати контейнер з зображеннями, коли вони є
 .gallery {
   display: none;
-}
-
-
+} */
 
 /* Стили для карточек фотографий */
 .photo-card {
-display: flex;
-align-items: center;
-gap: 40px 10px;
-flex-wrap: wrap;
-min-width: 300px;}
-
-
-.photo-card>img {
-display: flex;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 10px;
+  min-width: 200px;
+  max-width: 300px;
 }
 
+.photo-card>img {
+  max-width: 100%;
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-item {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+
+
 .load-more{
-  margin: auto;
-    display: block;
-    min-width: 169px;
-    height: 56px;
-    border-radius: 4px;
-    padding: 16px 32px;
-    background-color: #4D5AE5;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
+  margin: 20px auto;
+  display: block;
+  min-width: 169px;
+  height: 56px;
+  border-radius: 4px;
+  padding: 16px 32px;
+  background-color: #4D5AE5;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
    
 }

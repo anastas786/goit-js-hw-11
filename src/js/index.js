@@ -6,7 +6,6 @@ const form = document.getElementById('search-form');
 const input = form.querySelector('input[name="searchQuery"]');
 const imageContainer = document.querySelector('.gallery');
 
-
 // Ініціалізація Notiflix
 Notiflix.Notify.init({
     position: 'center-top',
@@ -36,22 +35,8 @@ function toggleLoadMoreButton(visible) {
 // Приховати кнопку "Load more" при запуску
 toggleLoadMoreButton(false);
 
-// Обробка події подачі форми
-form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const searchQuery = input.value.trim();
-    currentPage = 1; // Скинути значення сторінки при новому пошуку
-    toggleLoadMoreButton(false); // Приховати кнопку "Load more"
-    performImageSearch(searchQuery);
-});
-
-// Обробник кліку на кнопку "Load more"
-loadMoreButton.addEventListener('click', () => {
-    form.dispatchEvent(new Event('submit'));
-});
-
 // Функція для виконання HTTP-запиту
-async function performImageSearch(searchQuery) {
+async function performImageSearch(searchQuery, page) {
     try {
         const apiKey = '40003919-9e959b48e473cb3c5dd9e8581';
         const response = await axios.get('https://pixabay.com/api/', {
@@ -61,7 +46,7 @@ async function performImageSearch(searchQuery) {
                 image_type: 'photo',
                 orientation: 'horizontal',
                 safesearch: true,
-                page: currentPage,
+                page: page,
                 per_page: 40,
             },
         });
@@ -73,15 +58,13 @@ async function performImageSearch(searchQuery) {
             Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
             showForm();
         } else {
-            if (currentPage === 1) {
+            if (page === 1) {
                 clearGallery();
             }
 
             createImageCards(images);
 
-            imageContainer.style.display = 'block';
-
-            currentPage++;
+            // imageContainer.style.display = 'block';
 
             // Если количество изображений меньше 40, значит, это конец коллекции
             if (images.length < 40) {
@@ -144,3 +127,19 @@ function createImageCards(images) {
         imageContainer.appendChild(photoCard);
     });
 }
+
+// Обработчик подачи формы
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const searchQuery = input.value.trim();
+    currentPage = 1; // Скинути значення сторінки при новому пошуку
+    toggleLoadMoreButton(false); // Приховати кнопку "Load more"
+    performImageSearch(searchQuery, currentPage);
+});
+
+// Обработчик кліку на кнопку "Load more"
+loadMoreButton.addEventListener('click', () => {
+    const searchQuery = input.value.trim();
+    currentPage++; // Збільшити значення сторінки для завантаження наступних зображень
+    performImageSearch(searchQuery, currentPage);
+});
