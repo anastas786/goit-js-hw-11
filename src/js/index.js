@@ -64,7 +64,7 @@ async function performImageSearch(searchQuery, page) {
 
             createImageCards(images);
 
-            // imageContainer.style.display = 'block';
+            imageContainer.style.display = 'block';
 
             // Если количество изображений меньше 40, значит, это конец коллекции
             if (images.length < 40) {
@@ -88,6 +88,8 @@ function clearGallery() {
 
 // Функція для створення та додавання карток зображень в галерею
 function createImageCards(images) {
+
+
     images.forEach((image) => {
         const photoCard = document.createElement('div');
         photoCard.classList.add('photo-card');

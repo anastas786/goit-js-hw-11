@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -12,30 +13,31 @@ body {
   background-color: #f0f0f0;
   margin: 0;
   padding: 0;
-
 }
 
-.gallery{
+.gallery {
   display: flex;
 }
-/* Показати контейнер з зображеннями, коли вони є
-.gallery {
-  display: none;
-} */
 
-/* Стили для карточек фотографий */
+/* gallery.css */
 .photo-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
-  min-width: 200px;
-  max-width: 300px;
+  min-width: 300px;
+  /* max-width: 400px; */
+
 }
 
-.photo-card>img {
+/* .photo-card>img {
   max-width: 100%;
-}
+} */
+/* .gallery {
+  display: none;
+}  */
+
+
 
 .info {
   display: flex;
@@ -53,21 +55,41 @@ body {
 }
 
 
-
 .load-more{
-  margin: 20px auto;
-  display: block;
-  min-width: 169px;
-  height: 56px;
-  border-radius: 4px;
-  padding: 16px 32px;
+   margin: 20px auto;
   background-color: #4D5AE5;
-  font-weight: 400;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  display: block;
+}
+
+
+.search-form input {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+
+}
+
+
+.search-form button {
+  background-color: #4D5AE5;
+  color: #fff;
   border: none;
-  color: #ffffff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
-   
+}
+
+
+.search-form button:hover {
+  background-color: #3643d7;
 }
